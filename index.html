@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Jqury Learn</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="background-color: #2d2d2e;">
+    <nav class="w-100 navbar navbar-expand-lg navbar-dark bg-dark user-select-none">
+        <div class="w-100 d-flex justify-content-between">
+            <div class="flex-grow-1 w-25 d-flex justify-content-around">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="#">My Galery</a>
+                    <a class="nav-link" href="#">Popular</a>
+                    <a class="nav-link" href="#">Find Frend</a>
+                </div>
+            </div>
+            <div class="flex-grow-1 w-50 d-flex justify-content-center">
+                <a class="navbar-brand" href="#">Your Galery</a>
+            </div>
+            <div class="flex-grow-1 w-25 d-flex justify-content-end">
+                <button class="btn btn-outline-success" type="submit">Log In</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="w-100 d-flex justify-content-center mt-4 mb-4">
+        <div id="card-list" class="row row-cols-4 g-4 justify-content-center" style="width: 95%;">
+        </div>
+    </div>
+
+    <div style="background-color: rgb(1, 1, 1, 0.8);" id="popup" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered w-100 mw-100 h-100 mh-100" role="document">
+            <div class="modal-content vw-100">
+                Some Content
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+
+</body>
+
+</html>
