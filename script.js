@@ -58,7 +58,13 @@ $(document).ready(function () {
   });
 
   $('.card').on('click', function () {
+    console.log('show');
     $('#popup').modal('show');
+  });
+
+  $('#close-button').on('click', function () {
+    console.log('hide');
+    $('#popup').modal('hide');
   });
 
   let currentImage = 1;
