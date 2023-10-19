@@ -33,18 +33,32 @@
     </nav>
 
     <div class="w-100 d-flex justify-content-center mt-4 mb-4">
-        <div id="card-list" class="row row-cols-4 g-4 justify-content-center" style="width: 95%;">
+        <div id="card-list" class="row row-cols-4 g-4 justify-content-around" style="width: 95%;">
         </div>
     </div>
 
     <div style="background-color: rgb(1, 1, 1, 0.8);" id="popup" class="modal fade" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered w-100 mw-100" role="document">
-            <div class="modal-content w-100 h">
-                Some Content
+        <div class="modal-content w-100 h-100 bg-transparent">
+            <div class="d-flex justify-content-between align-items-center h-100">
+                <button id="prev-button" class="btn btn-outline-success">Prev</button>
+                <img class="w-75" id="picture"
+                    src='https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg'
+                    alt="" />
+                <div class="h-100 d-flex flex-column">
+                    <button id="close-button" class="btn btn-outline-danger element">Close</button>
+                    <button id="next-button" class="btn btn-outline-success">Next</button>
+                    <div></div>
+                </div>
             </div>
         </div>
     </div>
+
+    <div>
+        <img id="picture" src="" alt="" />
+    </div>
+
+    <button id="next-button" class="btn-outline-dark">Next</button>
 
     <script type="module" src="./script.js"></script>
 

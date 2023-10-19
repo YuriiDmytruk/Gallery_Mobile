@@ -60,4 +60,22 @@ $(document).ready(function () {
   $('.card').on('click', function () {
     $('#popup').modal('show');
   });
+
+  let currentImage = 1;
+
+  $('#next-button').on('click', function () {
+    console.log(currentImage);
+    $('#picture')
+      .attr('src', images[currentImage].src)
+      .attr('alt', images[currentImage].alt);
+    currentImage++;
+  });
+
+  $('#prev-button').on('click', function () {
+    console.log(currentImage);
+    $('#picture')
+      .attr('src', images[currentImage].src)
+      .attr('alt', images[currentImage].alt);
+    currentImage--;
+  });
 });
