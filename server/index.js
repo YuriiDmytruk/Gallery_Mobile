@@ -1,9 +1,17 @@
 const express = require('express');
+
+let images = require('./data');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send(images);
+});
+
+app.post('/', (req, res) => {
+  console.log({ ...req.query });
+  images;
+  res.send('done');
 });
 
 app.listen(port, () => {
