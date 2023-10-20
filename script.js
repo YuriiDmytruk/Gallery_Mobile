@@ -1,119 +1,23 @@
-const images = [
-  {
-    author: 'Yurii',
-    alt: 'tree',
-    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
-  },
-  {
-    author: 'Roman',
-    alt: 'tree',
-    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
-  },
-  {
-    author: 'Taras',
-    alt: 'tree',
-    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
-  },
-  {
-    author: 'Yurii',
-    alt: 'tree',
-    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
-  },
-  {
-    author: 'Roman',
-    alt: 'tree',
-    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
-  },
-  {
-    author: 'Taras',
-    alt: 'tree',
-    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
-  },
-  {
-    author: 'Yurii',
-    alt: 'tree',
-    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
-  },
-  {
-    author: 'Roman',
-    alt: 'tree',
-    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
-  },
-  {
-    author: 'Taras',
-    alt: 'tree',
-    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
-  },
-  {
-    author: 'Yurii',
-    alt: 'tree',
-    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
-  },
-  {
-    author: 'Roman',
-    alt: 'tree',
-    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
-  },
-  {
-    author: 'Taras',
-    alt: 'tree',
-    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
-  },
-  {
-    author: 'Yurii',
-    alt: 'tree',
-    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
-  },
-  {
-    author: 'Roman',
-    alt: 'tree',
-    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
-  },
-  {
-    author: 'Taras',
-    alt: 'tree',
-    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
-  },
-  {
-    author: 'Yurii',
-    alt: 'tree',
-    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
-  },
-  {
-    author: 'Roman',
-    alt: 'tree',
-    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
-  },
-  {
-    author: 'Taras',
-    alt: 'tree',
-    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
-  },
-  {
-    author: 'Kolya',
-    alt: 'tree',
-    src: 'https://cdn.britannica.com/50/180050-138-521974A7/tree-limits-height-width-growth-ring-discussion.jpg?w=800&h=450&c=crop',
-  },
-  {
-    author: 'Ivan',
-    alt: 'tree',
-    src: 'https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2019/08/03091106/Trees-1024x682.jpg',
-  },
-  {
-    author: 'Petro',
-    alt: 'tree',
-    src: 'https://cdn.britannica.com/98/214598-050-9879F2FA/giant-sequoia-tree-Sequoia-National-Park-California.jpg',
-  },
-];
+let images;
+let currentImageID = 0;
 
-let currentImage = 0;
+const setImage = () => {
+  $('#picture')
+    .attr('src', images[currentImageID].src)
+    .attr('alt', images[currentImageID].alt);
+  $('#image-count').html(`${currentImageID + 1}/${images.length}`);
+};
 
-$(document).ready(function () {
-  $('#card-list').html(() =>
-    images
-      .map(
-        (image, index) => `
-        <div role='button' id="${index}" class="col">
+$(function () {
+  let $images = $('#card-list');
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:4000/',
+    success: function (data) {
+      images = data;
+      $.each(images, function (index, image) {
+        $images.append(`
+          <div role='button' id="${index}" class="col">
             <div class="card h-100 user-select-none">
                 <img src="${image.src}"
                     class="card-img-top h-75"
@@ -123,31 +27,29 @@ $(document).ready(function () {
                 </div>
             </div>
         </div>
-    `
-      )
-      .join('')
-  );
+        `);
+      });
 
-  $('#picture')
-    .attr('src', images[currentImage].src)
-    .attr('alt', images[currentImage].alt);
-
-  $('.col').hover(function () {
-    console.log($(this).attr('id'));
-    $('#' + $(this).attr('id'))
-      .find('.card')
-      .toggleClass('hover-card');
+      $('#picture').attr('src', images[0].src).attr('alt', images[0].alt);
+    },
   });
+});
 
-  const setImage = () => {
-    $('#picture')
-      .attr('src', images[currentImage].src)
-      .attr('alt', images[currentImage].alt);
-    $('#image-count').html(`${currentImage + 1}/${images.length}`);
-  };
+$(document).ready(function () {
+  $(document)
+    .on('mouseenter', '.col', function () {
+      $('#' + $(this).attr('id'))
+        .find('.card')
+        .addClass('hover-card');
+    })
+    .on('mouseleave', '.col', function () {
+      $('#' + $(this).attr('id'))
+        .find('.card')
+        .removeClass('hover-card');
+    });
 
-  $('.card').on('click', function () {
-    currentImage = parseInt($(this).parent().attr('id'));
+  $(document).on('click', '.card', function () {
+    currentImageID = parseInt($(this).parent().attr('id'));
     setImage();
     $('#popup').modal('show');
   });
@@ -157,8 +59,8 @@ $(document).ready(function () {
   });
 
   $('#next-button').on('click', function () {
-    if (currentImage !== images.length - 1) {
-      currentImage++;
+    if (currentImageID !== images.length - 1) {
+      currentImageID++;
       $('#picture').fadeOut('fast', function () {
         setImage();
         $('#picture').fadeIn('fast');
@@ -167,8 +69,8 @@ $(document).ready(function () {
   });
 
   $('#prev-button').on('click', function () {
-    if (currentImage !== 0) {
-      currentImage--;
+    if (currentImageID !== 0) {
+      currentImageID--;
       $('#picture').fadeOut('fast', function () {
         setImage();
         $('#picture').fadeIn('fast');
