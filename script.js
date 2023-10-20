@@ -15,6 +15,81 @@ const images = [
     src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
   },
   {
+    author: 'Yurii',
+    alt: 'tree',
+    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
+  },
+  {
+    author: 'Roman',
+    alt: 'tree',
+    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
+  },
+  {
+    author: 'Taras',
+    alt: 'tree',
+    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
+  },
+  {
+    author: 'Yurii',
+    alt: 'tree',
+    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
+  },
+  {
+    author: 'Roman',
+    alt: 'tree',
+    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
+  },
+  {
+    author: 'Taras',
+    alt: 'tree',
+    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
+  },
+  {
+    author: 'Yurii',
+    alt: 'tree',
+    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
+  },
+  {
+    author: 'Roman',
+    alt: 'tree',
+    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
+  },
+  {
+    author: 'Taras',
+    alt: 'tree',
+    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
+  },
+  {
+    author: 'Yurii',
+    alt: 'tree',
+    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
+  },
+  {
+    author: 'Roman',
+    alt: 'tree',
+    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
+  },
+  {
+    author: 'Taras',
+    alt: 'tree',
+    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
+  },
+  {
+    author: 'Yurii',
+    alt: 'tree',
+    src: 'https://s3-eu-west-1.amazonaws.com/blog-ecotree/blog/0001/01/ad46dbb447cd0e9a6aeecd64cc2bd332b0cbcb79.jpeg',
+  },
+  {
+    author: 'Roman',
+    alt: 'tree',
+    src: 'https://www.thespruce.com/thmb/ClRANI4jTWhkGeNhvJtArRhlGSA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-difference-between-trees-and-shrubs-3269804-hero-a4000090f0714f59a8ec6201ad250d90.jpg',
+  },
+  {
+    author: 'Taras',
+    alt: 'tree',
+    src: 'https://www.gardeningknowhow.com/wp-content/uploads/2017/07/hardwood-tree.jpg',
+  },
+  {
     author: 'Kolya',
     alt: 'tree',
     src: 'https://cdn.britannica.com/50/180050-138-521974A7/tree-limits-height-width-growth-ring-discussion.jpg?w=800&h=450&c=crop',
@@ -30,6 +105,8 @@ const images = [
     src: 'https://cdn.britannica.com/98/214598-050-9879F2FA/giant-sequoia-tree-Sequoia-National-Park-California.jpg',
   },
 ];
+
+let currentImage = 0;
 
 $(document).ready(function () {
   $('#card-list').html(() =>
@@ -51,37 +128,67 @@ $(document).ready(function () {
       .join('')
   );
 
+  $('#picture')
+    .attr('src', images[currentImage].src)
+    .attr('alt', images[currentImage].alt);
+
   $('.col').hover(function () {
+    console.log($(this).attr('id'));
     $('#' + $(this).attr('id'))
       .find('.card')
       .toggleClass('hover-card');
   });
 
+  const setImage = () => {
+    $('#picture')
+      .attr('src', images[currentImage].src)
+      .attr('alt', images[currentImage].alt);
+    $('#image-count').html(`${currentImage + 1}/${images.length}`);
+  };
+
   $('.card').on('click', function () {
-    console.log('show');
+    currentImage = parseInt($(this).parent().attr('id'));
+    setImage();
     $('#popup').modal('show');
   });
 
   $('#close-button').on('click', function () {
-    console.log('hide');
     $('#popup').modal('hide');
   });
 
-  let currentImage = 1;
-
   $('#next-button').on('click', function () {
-    console.log(currentImage);
-    $('#picture')
-      .attr('src', images[currentImage].src)
-      .attr('alt', images[currentImage].alt);
-    currentImage++;
+    if (currentImage !== images.length - 1) {
+      currentImage++;
+      $('#picture').fadeOut('fast', function () {
+        setImage();
+        $('#picture').fadeIn('fast');
+      });
+    }
   });
 
   $('#prev-button').on('click', function () {
-    console.log(currentImage);
-    $('#picture')
-      .attr('src', images[currentImage].src)
-      .attr('alt', images[currentImage].alt);
-    currentImage--;
+    if (currentImage !== 0) {
+      currentImage--;
+      $('#picture').fadeOut('fast', function () {
+        setImage();
+        $('#picture').fadeIn('fast');
+      });
+    }
   });
+
+  $('#next-button')
+    .on('mouseenter', function () {
+      $('#right-arrow').attr('src', './images/black-arrow.png');
+    })
+    .on('mouseleave', function () {
+      $('#right-arrow').attr('src', './images/white-arrow.png');
+    });
+
+  $('#prev-button')
+    .on('mouseenter', function () {
+      $('#left-arrow').attr('src', './images/black-arrow.png');
+    })
+    .on('mouseleave', function () {
+      $('#left-arrow').attr('src', './images/white-arrow.png');
+    });
 });
