@@ -8,15 +8,8 @@ const setImage = () => {
   $('#image-count').html(`${currentImageID + 1}/${images.length}`);
 };
 
-$(function () {
-  let $images = $('#card-list');
-  $.ajax({
-    type: 'GET',
-    url: 'http://localhost:4000/',
-    success: function (data) {
-      images = data;
-      $.each(images, function (index, image) {
-        $images.append(`
+const createList = (index, image, $images) => {
+  $images.append(`
           <div role='button' id="${index}" class="col">
             <div class="card h-100 user-select-none">
                 <img src="${image.src}"
@@ -28,8 +21,18 @@ $(function () {
             </div>
         </div>
         `);
-      });
+};
 
+$(function () {
+  let $images = $('#card-list');
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:4000/',
+    success: function (data) {
+      images = data;
+      $.each(images, function (index, image) {
+        createList(index, image, $images);
+      });
       $('#picture').attr('src', images[0].src).attr('alt', images[0].alt);
     },
   });
@@ -93,4 +96,34 @@ $(document).ready(function () {
     .on('mouseleave', function () {
       $('#left-arrow').attr('src', './images/white-arrow.png');
     });
+
+  $('#logo').on('click', function () {
+    $('#input').modal('show');
+  });
+
+  $('#button-add').on('click', function () {
+    let $src = $('#input-src');
+    let $alt = $('#input-alt');
+    let $author = $('#input-author');
+    let image = {
+      src: $src.val(),
+      alt: $alt.val(),
+      author: $author.val(),
+    };
+    let $images = $('#card-list');
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:4000/',
+      data: JSON.stringify({ image }),
+      contentType: 'application/json',
+      success: function (data) {
+        images = data;
+        $images.html('');
+        $.each(images, function (index, image) {
+          createList(index, image, $images);
+        });
+        $('#picture').attr('src', images[0].src).attr('alt', images[0].alt);
+      },
+    });
+  });
 });

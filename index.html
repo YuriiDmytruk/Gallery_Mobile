@@ -25,7 +25,7 @@
                     <a class="nav-link" href="#">Find Frend</a>
                 </div>
             </div>
-            <div class="flex-grow-1 w-50 d-flex justify-content-center">
+            <div id="logo" class="flex-grow-1 w-50 d-flex justify-content-center">
                 <a class="navbar-brand" href="#">Your Galery</a>
             </div>
             <div class="flex-grow-1 w-25 d-flex justify-content-end">
@@ -61,6 +61,39 @@
                         </button>
                         <div></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: rgb(1, 1, 1, 0.8);" class="modal fade" id="input" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add new image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Src:</label>
+                            <input type="text" class="form-control" id="input-src">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Alt:</label>
+                            <input type="text" class="form-control" id="input-alt">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Author:</label>
+                            <input type="text" class="form-control" id="input-author">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="button-add" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add
+                        Image</button>
                 </div>
             </div>
         </div>
