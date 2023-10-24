@@ -1,20 +1,43 @@
+import { View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import {
+  MD3LightTheme as Default,
+  MD3DarkTheme,
+  PaperProvider,
+} from 'react-native-paper';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import AddImagePage from './src/pages/AddImagePage';
+import FindFrendsPage from './src/pages/FindFrendsPage';
+import MyGaleryPage from './src/pages/MyGaleryPage';
+import MyProfilePage from './src/pages/MyProfilePage';
+import PopularGaleryPage from './src/pages/PopularGaleryPage';
+
+import NavBar from './src/components/NavBar';
+
+const theme = Default;
+const Stack = createNativeStackNavigator();
+
+const App = () => (
+  <PaperProvider theme={theme}>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="AddImage" component={AddImagePage} />
+        <Stack.Screen name="FindFrends" component={FindFrendsPage} />
+        <Stack.Screen name="MyGalery" component={MyGaleryPage} />
+        <Stack.Screen name="MyProfile" component={MyProfilePage} />
+        <Stack.Screen name="PopularGalery" component={PopularGaleryPage} />
+      </Stack.Navigator>
+      <NavBar />
+    </NavigationContainer>
+    <StatusBar hidden />
+  </PaperProvider>
+);
+
+export default App;
