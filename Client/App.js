@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import {
   MD3LightTheme as Default,
-  MD3DarkTheme,
+  MD3DarkTheme as DefaultDark,
   PaperProvider,
 } from 'react-native-paper';
 
@@ -15,7 +15,7 @@ import MyGaleryPage from './src/pages/MyGaleryPage';
 import MyProfilePage from './src/pages/MyProfilePage';
 import PopularGaleryPage from './src/pages/PopularGaleryPage';
 
-import NavBar from './src/components/NavBar';
+import { NavBar } from './src/components/index';
 
 const theme = Default;
 const Stack = createNativeStackNavigator();

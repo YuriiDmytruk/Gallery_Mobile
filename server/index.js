@@ -7,19 +7,21 @@ const port = 4000;
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
 app.get('/', (req, res) => {
-  res.send(images);
+  console.log('GET');
+  res.send({ images: images });
 });
 
 app.post('/', (req, res) => {
+  console.log('POST');
   images = [req.body.image, ...images];
-  res.send(images);
+  res.send({ images: images });
 });
 
 app.listen(port, () => {
