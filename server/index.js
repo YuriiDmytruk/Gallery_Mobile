@@ -1,19 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-let images = require('./data');
+const mongoose = require('./connection');
+const { postImage, getAllImages } = require('./dataManagers/imagesDataManager');
+
 const app = express();
 const port = 4000;
-
-const { default: mongoose } = require('mongoose');
-
-const uri =
-  'mongodb+srv://yurii:mongoDB1@axel.wkuuigc.mongodb.net/?retryWrites=true&w=majority';
-
-mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((res) => console.log('connedcted to DB'))
-  .catch((error) => console.log(error));
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -25,13 +17,24 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
   console.log('GET');
-  res.send({ images: images });
+  getAllImages()
+    .then((images) => {
+      res.send({ images: images });
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 });
 
 app.post('/', (req, res) => {
   console.log('POST');
-  images = [req.body.image, ...images];
-  res.send({ images: images });
+  postImage({ ...req.body })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 });
 
 app.listen(port, () => {
