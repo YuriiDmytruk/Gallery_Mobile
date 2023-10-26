@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const mongoose = require('./connection');
-const { postImage, getAllImages } = require('./dataManagers/imagesDataManager');
+const { postImage, getImagesByAuthor, getPopularImages } = require('./dataManagers/imagesDataManager');
+const { postUser, getUser } = require('./dataManagers/usersDataManager');
+const { putScore } = require('./dataManagers/imageScoresDataManager');
 
 const app = express();
 const port = 4000;
@@ -15,27 +17,50 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  console.log('GET');
-  getAllImages()
-    .then((images) => {
-      res.send({ images: images.reverse() });
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+//-----  Images  -----
+
+app.get('/images', async (req, res) => {
+  console.log('GET images');
+  let result
+  if(req.body.author !== ''){
+  result = await getImagesByAuthor(req.body.author);
+  }
+  else{
+    result = await getPopularImages(parseInt(req.body.amount));
+  }
+  res.send({ images: result });
 });
 
-app.post('/', (req, res) => {
-  console.log('POST');
-  postImage({ ...req.body.image })
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+app.post('/images', async (req, res) => {
+  console.log('POST image');
+  const result = await postImage({ ...req.body.image})
+  res.send(result);
 });
+
+//-----  Users  -----
+
+app.get('/users', async (req, res) => {
+  console.log('GET user');
+  const result = await getUser({ ...req.body.user })
+  res.send(result);
+});
+
+app.post('/users', async (req, res) => {
+  console.log('POST user');
+  const result = await postUser({ ...req.body.user })
+  res.send(result);
+});
+
+//-----  Scores  -----
+
+app.put('/scores', async (req, res) => {
+  console.log('PUT score');
+  const result = await putScore({ ...req.body.score })
+  res.send(result);
+});
+
+
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

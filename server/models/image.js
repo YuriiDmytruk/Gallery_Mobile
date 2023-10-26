@@ -8,11 +8,7 @@ const imageShema = new Schema(
       required: true,
     },
     author: {
-      type: String,
-      required: true,
-    },
-    popularity: {
-      type: Number,
+      type: Schema.Types.ObjectId,
       required: true,
     },
     description: {
