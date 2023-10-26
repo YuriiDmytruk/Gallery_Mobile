@@ -5,6 +5,16 @@ let images = require('./data');
 const app = express();
 const port = 4000;
 
+const { default: mongoose } = require('mongoose');
+
+const uri =
+  'mongodb+srv://yurii:mongoDB1@axel.wkuuigc.mongodb.net/?retryWrites=true&w=majority';
+
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((res) => console.log('connedcted to DB'))
+  .catch((error) => console.log(error));
+
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
