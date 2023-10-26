@@ -13,8 +13,9 @@ const AddImagePage = () => {
   const author = 'author';
 
   const [image, setImage] = useState({
-    src: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    alt: 'Tree',
+    url: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+    description: 'Tree',
+    popularity: -1,
     author: author,
   });
 
@@ -27,15 +28,15 @@ const AddImagePage = () => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.gap}
-          label="Image SRC"
-          value={image.src}
-          onChangeText={(text) => setImage({ ...image, src: text })}
+          label="Image url"
+          value={image.url}
+          onChangeText={(text) => setImage({ ...image, url: text })}
         />
         <TextInput
           style={styles.gap}
-          label="Alt"
-          value={image.alt}
-          onChangeText={(text) => setImage({ ...image, alt: text })}
+          label="Description"
+          value={image.description}
+          onChangeText={(text) => setImage({ ...image, description: text })}
         />
       </View>
       <ImageCard style={styles.gap} image={image} />
@@ -58,9 +59,9 @@ export default AddImagePage;
 /*
 <View>
         <TextInput
-          label="Image SRC"
-          value={image.src}
-          onChangeText={(text) => setImage({ ...image, src: text })}
+          label="Image url"
+          value={image.url}
+          onChangeText={(text) => setImage({ ...image, url: text })}
         />
         <TextInput
           label="Alt"

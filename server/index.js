@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   console.log('GET');
   getAllImages()
     .then((images) => {
-      res.send({ images: images });
+      res.send({ images: images.reverse() });
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   console.log('POST');
-  postImage({ ...req.body })
+  postImage({ ...req.body.image })
     .then((result) => {
       res.send(result);
     })
