@@ -8,7 +8,7 @@ const mongoose  = require ( './connection');
 
 import { postImage, getImagesByAuthor, getPopularImages } from './dataManagers/imagesDataManager';
 import { putScore } from './dataManagers/imageScoresDataManager';
-//import { postUser, getUser } from './dataManagers/usersDataManager';
+import { postUser, getUser } from './dataManagers/usersDataManager';
 
 
 dotenv.config();
@@ -45,7 +45,7 @@ app.post('/images', async (req: Request, res: Response) => {
 });
 
 //-----  Users  -----
-/*
+
 app.get('/users', async (req: Request, res: Response) => {
   console.log('GET user');
   const result = await getUser({ ...req.body.user })
@@ -57,7 +57,7 @@ app.post('/users', async (req: Request, res: Response) => {
   const result = await postUser({ ...req.body.user })
   res.send(result);
 });
-*/
+
 //-----  Scores  -----
 
 app.put('/scores', async (req: Request, res: Response) => {
@@ -65,9 +65,6 @@ app.put('/scores', async (req: Request, res: Response) => {
   const result = await putScore({ ...req.body.score })
   res.send(result);
 });
-
-
-
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
