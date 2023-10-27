@@ -18,7 +18,7 @@ const express_1 = __importDefault(require("express"));
 const mongoose = require('./connection');
 const imagesDataManager_1 = require("./dataManagers/imagesDataManager");
 const imageScoresDataManager_1 = require("./dataManagers/imageScoresDataManager");
-//import { postUser, getUser } from './dataManagers/usersDataManager';
+const usersDataManager_1 = require("./dataManagers/usersDataManager");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = 4000;
@@ -47,19 +47,16 @@ app.post('/images', (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     res.send(result);
 }));
 //-----  Users  -----
-/*
-app.get('/users', async (req: Request, res: Response) => {
-  console.log('GET user');
-  const result = await getUser({ ...req.body.user })
-  res.send(result);
-});
-
-app.post('/users', async (req: Request, res: Response) => {
-  console.log('POST user');
-  const result = await postUser({ ...req.body.user })
-  res.send(result);
-});
-*/
+app.get('/users', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('GET user');
+    const result = yield (0, usersDataManager_1.getUser)(Object.assign({}, req.body.user));
+    res.send(result);
+}));
+app.post('/users', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('POST user');
+    const result = yield (0, usersDataManager_1.postUser)(Object.assign({}, req.body.user));
+    res.send(result);
+}));
 //-----  Scores  -----
 app.put('/scores', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('PUT score');
