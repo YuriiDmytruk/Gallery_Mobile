@@ -15,9 +15,9 @@ const ImageCard = ({ image }) => {
   useEffect(() => {
     const verifyURL = async () => {
       try {
-        const response = await fetch(image.src);
+        const response = await fetch(image.url);
         if (response.ok) {
-          setImageSource({ uri: image.src });
+          setImageSource({ uri: image.url });
         } else {
           setImageSource(require('../images/errorImage.png'));
         }
@@ -27,7 +27,7 @@ const ImageCard = ({ image }) => {
     };
 
     verifyURL();
-  }, [image.src]);
+  }, [image.url]);
 
   return (
     <View
