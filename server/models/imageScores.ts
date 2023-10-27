@@ -1,4 +1,5 @@
-const { default: mongoose } = require('mongoose');
+import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 
 const imageScoresShema = new Schema(
@@ -17,4 +18,4 @@ const imageScoresShema = new Schema(
 
 const ImageScores = mongoose.model('ImageScores', imageScoresShema, 'imagescores');
 
-module.exports = ImageScores;
+export default ImageScores;

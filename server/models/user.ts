@@ -1,4 +1,5 @@
-const { default: mongoose } = require('mongoose');
+import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 
 const userShema = new Schema(
@@ -18,7 +19,7 @@ const userShema = new Schema(
     },
     friends: [{
       type: Schema.Types.ObjectId,
-        ref: 'User',
+      ref: 'User',
     }],
   },
   { timestamps: true }
@@ -26,4 +27,4 @@ const userShema = new Schema(
 
 const User = mongoose.model('User', userShema);
 
-module.exports = User;
+export default User;
