@@ -15,15 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.putScore = exports.getAverageImageScore = exports.postImageScore = void 0;
 const imageScores_1 = __importDefault(require("../models/imageScores"));
 const utill_1 = __importDefault(require("./utill"));
+const responseCreators_1 = require("./responseCreators");
 const postImageScore = (imageId) => __awaiter(void 0, void 0, void 0, function* () {
     const imageScore = new imageScores_1.default({ imageId, userScores: [] });
     try {
         const result = yield imageScore.save();
-        return {
-            statusCode: 200,
-            value: null,
-            errorMessage: '',
-        };
+        return (0, responseCreators_1.create200Response)(null);
     }
     catch (error) {
         return (0, utill_1.default)(error);
@@ -35,11 +32,7 @@ const getAverageImageScore = (imageId) => __awaiter(void 0, void 0, void 0, func
         const imageScores = yield imageScores_1.default.find({ imageId: imageId });
         const imageScore = imageScores[0];
         if (imageScore.userScores.length === 0) {
-            return {
-                statusCode: 200,
-                value: 0,
-                errorMessage: '',
-            };
+            return (0, responseCreators_1.create200Response)(0);
         }
         const totalScore = imageScore.userScores.reduce((sum, scoreObject) => {
             var _a;
@@ -47,11 +40,7 @@ const getAverageImageScore = (imageId) => __awaiter(void 0, void 0, void 0, func
             return sum + score;
         }, 0);
         const averageScore = totalScore / imageScore.userScores.length;
-        return {
-            statusCode: 200,
-            value: averageScore,
-            errorMessage: '',
-        };
+        return (0, responseCreators_1.create200Response)(averageScore);
     }
     catch (error) {
         return (0, utill_1.default)(error);
@@ -70,28 +59,16 @@ const putScore = ({ imageId, userId, score, }) => __awaiter(void 0, void 0, void
                     yield imageScores_1.default.updateOne({ _id: imageScore.id }, { $set: { userScores: scores } });
                 }
                 else {
-                    return {
-                        statusCode: 404,
-                        value: null,
-                        errorMessage: 'Image not found',
-                    };
+                    return (0, responseCreators_1.create404Response)('Image not found');
                 }
             }
             else {
                 yield imageScores_1.default.updateOne({ _id: imageScore.id }, { $push: { userScores: { userId: userId, score: score } } });
             }
-            return {
-                statusCode: 200,
-                value: null,
-                errorMessage: '',
-            };
+            return (0, responseCreators_1.create200Response)(null);
         }
         else {
-            return {
-                statusCode: 404,
-                value: null,
-                errorMessage: 'Image not found',
-            };
+            return (0, responseCreators_1.create404Response)('Image not found');
         }
     }
     catch (error) {

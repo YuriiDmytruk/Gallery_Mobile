@@ -1,20 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+const responseCreators_1 = require("./responseCreators");
 const handleError = (error) => {
     if (error instanceof mongoose_1.Error) {
-        return {
-            statusCode: 404,
-            value: null,
-            errorMessage: error.message,
-        };
+        return (0, responseCreators_1.create404Response)(error.message);
     }
     else {
-        return {
-            statusCode: 500,
-            value: null,
-            errorMessage: 'An unexpected error occurred.',
-        };
+        return (0, responseCreators_1.create500Response)();
     }
 };
 exports.default = handleError;
