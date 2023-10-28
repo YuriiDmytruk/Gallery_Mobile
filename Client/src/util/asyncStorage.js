@@ -10,7 +10,9 @@ const set = async (value) => {
 
 const get = async () => {
   try {
-    return await AsyncStorage.getItem('USER');
+    const response = await AsyncStorage.getItem('USER');
+    console.log(response)
+    return response;
   } catch (error) {
     console.log(error);
     return null;
