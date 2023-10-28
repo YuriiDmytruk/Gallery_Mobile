@@ -54,4 +54,15 @@ const getUser = async ({
   }
 };
 
-export { postUser, getUser };
+const getAuthorName = async (id: string): Promise<ResponseType> => {
+  try {
+    const user = (await User.findOne({ _id: id }))?.toObject();
+    return user
+      ? create200Response(user.nickName)
+      : create404Response('No user with this ID');
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export { postUser, getUser, getAuthorName };

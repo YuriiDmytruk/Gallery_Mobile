@@ -42,7 +42,7 @@ const ImageCard = ({ image }) => {
       </View>
       <View style={styles.authorContainer}>
         <Text style={{ ...styles.authorText, color: theme.colors.onPrimary }}>
-          {image.author}
+          {image.authorName}
         </Text>
       </View>
     </View>

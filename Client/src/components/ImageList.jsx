@@ -11,8 +11,8 @@ const ImageList = ({ images }) => {
 
   return (
     <ScrollView style={styles.container}>
-      {images.map((image, index) => (
-        <ImageCard key={index} image={image} />
+      {images.map((image) => (
+        <ImageCard key={image._id} image={image} />
       ))}
       <View style={styles.placeHolder}></View>
     </ScrollView>

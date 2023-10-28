@@ -1,6 +1,7 @@
 import Image from '../models/image';
 import { ImageType, ResponseType, MongoImageType } from '../types';
 import { postImageScore, getAverageImageScore } from './imageScoresDataManager';
+import {getAuthorName} from './usersDataManager';
 import handleError from './utill';
 import { create200Response } from './responseCreators';
 
@@ -86,12 +87,15 @@ const createImageWithScore = async (
   const score = (await getAverageImageScore(image._id.toString())).value as
     | number
     | null;
-  console.log(image);
+  const name = (await getAuthorName(image.author.toString())).value as
+    | string
+    | null;
   return {
     ...image,
     score: score,
     _id: image._id.toString(),
-    author: image.author.toString(),
+    authorId: image.author.toString(),
+    authorName: name,
     createdAt: image.createdAt.toString(),
     updatedAt: image.updatedAt.toString(),
   };

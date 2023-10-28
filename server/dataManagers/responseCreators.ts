@@ -1,7 +1,7 @@
 import { ResponseType, ImageType, UserType } from '../types';
 
 const create200Response = (
-  value: ImageType | ImageType[] | UserType | UserType[] | number | null
+  value: ImageType | ImageType[] | UserType | UserType[] | number | null | string
 ): ResponseType => {
   return {
     statusCode: 200,

@@ -2,12 +2,18 @@ const URL = 'http://10.0.2.2:4000/';
 
 const getImages = async () => {
   try {
-    const response = await fetch(URL, {
-      method: 'GET',
-    });
+    const author = '653a4d862fec355aa279251e';
+    const amount = '';
+
+    const response = await fetch(
+      URL + `images/?author=${author}&amount=${amount}`,
+      {
+        method: 'GET',
+      }
+    );
     if (response.ok) {
       const data = await response.json();
-      return data.images;
+      return data.value;
     } else {
       throw new Error('Network response was not ok');
     }

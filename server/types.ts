@@ -2,14 +2,15 @@ import { ObjectId } from 'mongodb';
 
 type ResponseType = {
   statusCode: number;
-  value: ImageType | ImageType[] | UserType | UserType[] | number | null;
+  value: ImageType | ImageType[] | UserType | UserType[] | number | string | null;
   errorMessage: string;
 };
 
 type ImageType = {
   _id: string;
   url: string;
-  author: string;
+  authorId: string;
+  authorName: string | null;
   description: string;
   createdAt: string;
   updatedAt: string;

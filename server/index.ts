@@ -28,14 +28,18 @@ app.use((req: Request, res: Response, next) => {
 
 app.get('/images', async (req: Request, res: Response) => {
   console.log('GET images');
-  let result
-  if(req.body.author !== ''){
-  result = await getImagesByAuthor(req.body.author);
+  let result;
+
+  const author = req.query.author as string || '';
+  const amount = req.query.amount ? parseInt(req.query.amount as string) : 0;
+
+  if (author !== '') {
+    result = await getImagesByAuthor(author);
+  } else {
+    result = await getPopularImages(amount);
   }
-  else{
-    result = await getPopularImages(parseInt(req.body.amount));
-  }
-  res.send({ images: result });
+
+  res.send(result);
 });
 
 app.post('/images', async (req: Request, res: Response) => {
