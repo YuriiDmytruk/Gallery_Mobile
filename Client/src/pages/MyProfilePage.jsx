@@ -1,14 +1,22 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { useTheme, Button, TextInput } from 'react-native-paper';
 
-const MyProfilePage = () => {
-    const theme = useTheme();
+import { remove } from '../util/asyncStorage';
+
+const MyProfilePage = ({setAuthor}) => {
+  const theme = useTheme();
+
+  const onLogOutClick = async () => {
+    await remove();
+    setAuthor(null);
+  };
+
   return (
     <View>
-      <Text style={{ backgroundColor: theme.colors.primary, color: theme.colors.onPrimary}}>
-                MyProfilePage
-            </Text>
+      <Button mode="contained" onPress={onLogOutClick}>
+        <Text style={{ fontSize: 20 }}>Log out</Text>
+      </Button>
     </View>
   );
 };

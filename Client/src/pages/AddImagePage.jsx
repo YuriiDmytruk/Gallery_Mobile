@@ -42,7 +42,6 @@ const AddImagePage = () => {
       <ImageCard style={styles.gap} image={image} />
       <View style={styles.buttonContainer}>
         <Button
-          color="red"
           mode="contained"
           style={styles.button}
           onPress={onAddClick}

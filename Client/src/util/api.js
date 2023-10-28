@@ -13,7 +13,11 @@ const getImages = async () => {
     );
     if (response.ok) {
       const data = await response.json();
-      return data.value;
+      if (data.statusCode === 200) {
+        return data.value;
+      }
+      console.log(response.errorMessage);
+      return [];
     } else {
       throw new Error('Network response was not ok');
     }
@@ -34,7 +38,7 @@ const postImage = async (image) => {
     });
     if (response.ok) {
       const data = await response.json();
-      return data.images;
+      return data;
     } else {
       throw new Error('Network response was not ok');
     }
@@ -44,4 +48,46 @@ const postImage = async (image) => {
   }
 };
 
-export { getImages, postImage };
+const putUser = async (user) => {
+  try {
+    const response = await fetch(URL + 'users', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('Fetch error:', error.message);
+    throw error;
+  }
+};
+
+const postUser = async (user) => {
+  try {
+    const response = await fetch(URL + '/users', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('Fetch error:', error.message);
+    throw error;
+  }
+};
+
+export { getImages, postImage, putUser, postUser };

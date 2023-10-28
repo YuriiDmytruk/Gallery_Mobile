@@ -50,8 +50,9 @@ app.post('/images', async (req: Request, res: Response) => {
 
 //-----  Users  -----
 
-app.get('/users', async (req: Request, res: Response) => {
+app.put('/users', async (req: Request, res: Response) => {
   console.log('GET user');
+  console.log({ ...req.body.user })
   const result = await getUser({ ...req.body.user })
   res.send(result);
 });
