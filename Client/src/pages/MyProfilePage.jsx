@@ -1,16 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useTheme, Button, TextInput } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 
-import { remove } from '../util/asyncStorage';
+import { deleteUser } from '../redux/ducks/users';
 
-const MyProfilePage = ({setAuthor}) => {
+const MyProfilePage = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
 
-  const onLogOutClick = async () => {
-    await remove();
-    setAuthor(null);
-  };
+  const onLogOutClick = async () => dispatch(deleteUser());
 
   return (
     <View>

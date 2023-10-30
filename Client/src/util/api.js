@@ -1,12 +1,10 @@
 const URL = 'http://10.0.2.2:4000/';
 
-const getImages = async () => {
+const getImages = async (user) => {
   try {
-    const author = '653a4d862fec355aa279251e';
     const amount = '';
-
     const response = await fetch(
-      URL + `images/?author=${author}&amount=${amount}`,
+      URL + `images/?author=${JSON.parse(user)._id}&amount=${amount}`,
       {
         method: 'GET',
       }
@@ -28,8 +26,11 @@ const getImages = async () => {
 };
 
 const postImage = async (image) => {
+  const user = JSON.parse(image.authorName)
+  image = {...image, authorName: user.nickName, authorId: user._id}
   try {
-    const response = await fetch(URL, {
+    console.log(image)
+    const response = await fetch(URL + 'images', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

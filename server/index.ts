@@ -33,8 +33,12 @@ app.get('/images', async (req: Request, res: Response) => {
   const author = req.query.author as string || '';
   const amount = req.query.amount ? parseInt(req.query.amount as string) : 0;
 
+console.log(author)
+console.log(amount)
+
   if (author !== '') {
     result = await getImagesByAuthor(author);
+    console.log(result)
   } else {
     result = await getPopularImages(amount);
   }
@@ -52,7 +56,6 @@ app.post('/images', async (req: Request, res: Response) => {
 
 app.put('/users', async (req: Request, res: Response) => {
   console.log('GET user');
-  console.log({ ...req.body.user })
   const result = await getUser({ ...req.body.user })
   res.send(result);
 });

@@ -29,6 +29,11 @@ const ImageCard = ({ image }) => {
     verifyURL();
   }, [image.url]);
 
+  try {
+    const user = JSON.parse(image.authorName);
+    image = { ...image, authorName: user.nickName };
+  } catch (error) {}
+
   return (
     <View
       style={{ ...styles.container, backgroundColor: theme.colors.primary }}

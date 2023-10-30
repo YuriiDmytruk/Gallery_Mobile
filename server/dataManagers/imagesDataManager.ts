@@ -7,14 +7,16 @@ import { create200Response } from './responseCreators';
 
 const postImage = async ({
   url,
-  author,
+  authorId,
+  authorName,
   description,
 }: {
   url: string;
-  author: string;
+  authorId: string;
+  authorName: string;
   description: string;
 }): Promise<ResponseType> => {
-  const image = new Image({ url, author, description });
+  const image = new Image({ url, authorId, authorName, description });
   try {
     const result = await image.save();
     postImageScore(result.id);
@@ -26,11 +28,13 @@ const postImage = async ({
 
 const getImagesByAuthor = async (authorId: string): Promise<ResponseType> => {
   try {
-    const images = await Image.find({ author: authorId });
-
+    console.log(authorId)
+    const images = await Image.find({ authorId: authorId });
+    console.log(images)
     const imagesWithScores: ImageType[] = await Promise.all(
       images.map(async (image) => await createImageWithScore(image.toObject()))
     );
+    console.log(imagesWithScores)
     return create200Response(imagesWithScores);
   } catch (error) {
     return handleError(error);
@@ -87,14 +91,14 @@ const createImageWithScore = async (
   const score = (await getAverageImageScore(image._id.toString())).value as
     | number
     | null;
-  const name = (await getAuthorName(image.author.toString())).value as
+  const name = (await getAuthorName(image.authorId.toString())).value as
     | string
     | null;
   return {
     ...image,
     score: score,
     _id: image._id.toString(),
-    authorId: image.author.toString(),
+    authorId: image.authorId.toString(),
     authorName: name,
     createdAt: image.createdAt.toString(),
     updatedAt: image.updatedAt.toString(),
