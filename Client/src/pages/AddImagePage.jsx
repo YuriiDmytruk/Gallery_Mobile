@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 import { ImageCard } from '../components/index';
 
@@ -11,6 +12,7 @@ import { postImage } from '../util/api';
 
 const AddImagePage = () => {
   const theme = useTheme();
+  const navigation = useNavigation();
   const user = useSelector((state) => state.user);
 
   const [image, setImage] = useState({
@@ -22,6 +24,7 @@ const AddImagePage = () => {
 
   const onAddClick = () => {
     postImage(image);
+    navigation.navigate('MyGalery')
   };
 
   return (
