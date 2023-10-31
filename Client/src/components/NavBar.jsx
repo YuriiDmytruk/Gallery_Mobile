@@ -42,7 +42,7 @@ const NavBar = () => {
             icon="account-group"
             iconColor={theme.colors.primary}
             size={ICON_SIZE}
-            onPress={() => navigation.navigate('FindFrends')}
+            onPress={() => navigation.navigate('FrendsPage')}
           />
         </View>
       </View>
