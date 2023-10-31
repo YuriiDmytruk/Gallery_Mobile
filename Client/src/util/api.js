@@ -1,10 +1,9 @@
 const URL = 'http://10.0.2.2:4000/';
 
-const getImages = async (user) => {
+const getImages = async (userId, amount) => {
   try {
-    const amount = '';
     const response = await fetch(
-      URL + `images/?author=${JSON.parse(user)._id}&amount=${amount}`,
+      URL + `images/?author=${userId}&amount=${amount}`,
       {
         method: 'GET',
       }
@@ -26,10 +25,7 @@ const getImages = async (user) => {
 };
 
 const postImage = async (image) => {
-  const user = JSON.parse(image.authorName)
-  image = {...image, authorName: user.nickName, authorId: user._id}
   try {
-    console.log(image)
     const response = await fetch(URL + 'images', {
       method: 'POST',
       headers: {
@@ -72,8 +68,8 @@ const putUser = async (user) => {
 
 const postUser = async (user) => {
   try {
-    const response = await fetch(URL + '/users', {
-      method: 'PUT',
+    const response = await fetch(URL + 'users', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -91,4 +87,25 @@ const postUser = async (user) => {
   }
 };
 
-export { getImages, postImage, putUser, postUser };
+const putScore = async (score) => {
+  try {
+    const response = await fetch(URL + 'scores', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ score }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (error) {
+    console.error('Fetch error:', error.message);
+    throw error;
+  }
+}
+
+export { getImages, postImage, putUser, postUser, putScore };

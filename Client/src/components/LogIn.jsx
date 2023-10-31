@@ -17,7 +17,7 @@ const LogIn = () => {
   const dispatch = useDispatch();
 
   const onLogInClick = async () => {
-    const loggedInUser = JSON.stringify((await putUser(user)).value);
+    const loggedInUser = (await putUser(user)).value;
     dispatch(addUser(loggedInUser));
   };
 

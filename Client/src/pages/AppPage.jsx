@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -21,11 +21,11 @@ const theme = Default;
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const user = useSelector((state) => state.user);
+  const userId = useSelector((state) => state.user._id);
 
   return (
     <PaperProvider theme={theme}>
-      {user._id === '' ? (
+      {userId === '' ? (
         <EnterPage />
       ) : (
         <NavigationContainer>

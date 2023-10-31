@@ -28,13 +28,10 @@ const postImage = async ({
 
 const getImagesByAuthor = async (authorId: string): Promise<ResponseType> => {
   try {
-    console.log(authorId)
     const images = await Image.find({ authorId: authorId });
-    console.log(images)
     const imagesWithScores: ImageType[] = await Promise.all(
       images.map(async (image) => await createImageWithScore(image.toObject()))
     );
-    console.log(imagesWithScores)
     return create200Response(imagesWithScores);
   } catch (error) {
     return handleError(error);

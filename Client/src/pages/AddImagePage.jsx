@@ -16,8 +16,10 @@ const AddImagePage = () => {
   const [image, setImage] = useState({
     url: 'https://images.ctfassets.net/hrltx12pl8hq/3Z1N8LpxtXNQhBD5EnIg8X/975e2497dc598bb64fde390592ae1133/spring-images-min.jpg',
     description: 'Tree',
-    authorName: user,
+    authorName: user.nickName,
+    authorId: user._id
   });
+
   const onAddClick = () => {
     postImage(image);
   };

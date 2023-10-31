@@ -62,7 +62,7 @@ const putScore = async ({
           scores[index] = { ...scores[index], score: score };
           await ImageScores.updateOne(
             { _id: imageScore.id },
-            { $set: { userScores: scores } }
+            { $set: { userId: userId, userScores: scores } }
           );
         } else {
           return create404Response('Image not found');
