@@ -3,12 +3,12 @@ import { View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { Text, Button } from 'react-native-paper';
 
-import styles from '../styles/FindFrendLine';
+import styles from '../styles/FindFriendLine';
 
-const MyFrendLine = ({ user }) => {
+const FindFriendLine = ({ user }) => {
   const theme = useTheme();
 
-  const onDeleteClick = () => {
+  const onAddClick = () => {
 
   }
 
@@ -22,8 +22,8 @@ const MyFrendLine = ({ user }) => {
         <Text variant="headlineSmall">{user}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button mode="elevated" onPress={onDeleteClick}>
-          <Text variant="titleMedium">Delete Frend</Text>
+        <Button mode="elevated" onPress={onAddClick}>
+          <Text variant="titleMedium">Add to Friends</Text>
         </Button>
         <Button mode="elevated" onPress={onGaleryClick}>
           <Text variant="titleMedium">Galery</Text>
@@ -33,4 +33,4 @@ const MyFrendLine = ({ user }) => {
   );
 };
 
-export default MyFrendLine;
+export default FindFriendLine;

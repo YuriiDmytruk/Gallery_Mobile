@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 import EnterPage from './EnterPage';
 import AddImagePage from './AddImagePage';
-import FrendsPage from './FrendsPage';
+import FriendsPage from './FriendsPage';
 import MyGaleryPage from './MyGaleryPage';
 import MyProfilePage from './MyProfilePage';
 import PopularGaleryPage from './PopularGaleryPage';
@@ -35,7 +35,7 @@ const App = () => {
             }}
           >
             <Stack.Screen name="AddImage" component={AddImagePage} />
-            <Stack.Screen name="FrendsPage" component={FrendsPage} />
+            <Stack.Screen name="FriendsPage" component={FriendsPage} />
             <Stack.Screen name="MyGalery" component={MyGaleryPage} />
             <Stack.Screen name="MyProfile" component={MyProfilePage} />
             <Stack.Screen name="PopularGalery" component={PopularGaleryPage} />

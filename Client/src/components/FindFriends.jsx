@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useTheme, TextInput, Text } from 'react-native-paper';
 
-import FindFrendLine from './FindFrendLine';
+import FindFriendLine from './FindFriendLine';
 
-import styles from '../styles/FindFrends';
+import styles from '../styles/FindFriends';
 
-const FindFrends = () => {
+const FindFriends = () => {
   const [text, setText] = useState('');
   const [users, setUsers] = useState([
 
@@ -25,7 +25,7 @@ const FindFrends = () => {
           value={text}
           onChangeText={(text) => setText(text)}
           mode="outlined"
-          label="Find frends by nick name"
+          label="Find friends by nick name"
           placeholder="Search"
           right={
             <TextInput.Icon icon="account-search" onPress={onSearchClick} />
@@ -39,7 +39,7 @@ const FindFrends = () => {
       ) : (
         <ScrollView style={styles.usersContainer}>
           {users.map((user) => (
-            <FindFrendLine user={user} />
+            <FindFriendLine user={user} />
           ))}
           <View style={styles.placeHolder}></View>
         </ScrollView>
@@ -48,4 +48,4 @@ const FindFrends = () => {
   );
 };
 
-export default FindFrends;
+export default FindFriends;

@@ -3,8 +3,8 @@ import ImageCard from './ImageCard';
 import ImageList from './ImageList';
 import LogIn from './LogIn';
 import Register from './Register';
-import FindFrends from './FindFrends';
-import MyFrends from './MyFrends';
+import FindFriends from './FindFriends';
+import MyFriends from './MyFriends';
 
 export {
   NavBar,
@@ -12,6 +12,6 @@ export {
   ImageList,
   LogIn,
   Register,
-  FindFrends,
-  MyFrends,
+  FindFriends,
+  MyFriends,
 };

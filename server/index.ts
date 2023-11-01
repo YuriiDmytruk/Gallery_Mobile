@@ -59,8 +59,22 @@ app.put('/users', async (req: Request, res: Response) => {
 
 app.post('/users', async (req: Request, res: Response) => {
   console.log('POST user');
-  console.log({ ...req.body })
   const result = await postUser({ ...req.body.user });
+  res.send(result);
+});
+
+app.get('/users', async (req: Request, res: Response) => {
+  console.log('POST user');
+
+  let result;
+
+  const search = req.query.search;
+  let friends = req.query.friends;
+  if (friends !== undefined && friends !== '') {
+    friends = JSON.parse(friends.toString());
+  }
+  console.log(friends);
+  //const result = await postUser({ ...req.body.user });
   res.send(result);
 });
 

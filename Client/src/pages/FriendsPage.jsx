@@ -3,12 +3,12 @@ import { View, ScrollView, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
 
-import { FindFrends, MyFrends } from '../components/index';
+import { FindFriends, MyFriends } from '../components/index';
 
 import styles from '../styles/EnterPage';
 
-const FrendsPage = () => {
-  const [isFindFrends, setIsFindFrends] = useState(true);
+const FriendsPage = () => {
+  const [isFindFriends, setIsFindFriends] = useState(true);
   const theme = useTheme();
   return (
     <ScrollView>
@@ -16,21 +16,21 @@ const FrendsPage = () => {
         <Button
           mode="contained"
           style={styles.button}
-          onPress={() => setIsFindFrends(true)}
+          onPress={() => setIsFindFriends(true)}
         >
-          <Text style={{ fontSize: 20 }}>Find frends</Text>
+          <Text style={{ fontSize: 20 }}>Find friends</Text>
         </Button>
         <Button
           mode="contained"
           style={styles.button}
-          onPress={() => setIsFindFrends(false)}
+          onPress={() => setIsFindFriends(false)}
         >
-          <Text style={{ fontSize: 20 }}>My frends</Text>
+          <Text style={{ fontSize: 20 }}>My friends</Text>
         </Button>
       </View>
-      {isFindFrends ? <FindFrends /> : <MyFrends/>}
+      {isFindFriends ? <FindFriends /> : <MyFriends/>}
     </ScrollView>
   );
 };
 
-export default FrendsPage;
+export default FriendsPage;

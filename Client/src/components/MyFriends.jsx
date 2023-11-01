@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useTheme, Text } from 'react-native-paper';
 
-import MyFrendLine from './MyFrendLine';
+import MyFriendLine from './MyFriendLine';
 
-import styles from '../styles/FindFrends';
+import styles from '../styles/FindFriends';
 
-const MyFrends = () => {
+const MyFriends = () => {
   const [users, setUsers] = useState([
 
   ]);
@@ -16,12 +16,12 @@ const MyFrends = () => {
     <View style={styles.container}>
       {users.length === 0 ? (
         <View style={styles.messageContainer}>
-          <Text variant="displaySmall">No frends yet</Text>
+          <Text variant="displaySmall">No friends yet</Text>
         </View>
       ) : (
         <ScrollView style={styles.usersContainer}>
           {users.map((user) => (
-            <MyFrendLine user={user} />
+            <MyFriendLine user={user} />
           ))}
           <View style={styles.placeHolder}></View>
         </ScrollView>
@@ -30,4 +30,4 @@ const MyFrends = () => {
   );
 };
 
-export default MyFrends;
+export default MyFriends;
