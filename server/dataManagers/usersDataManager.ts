@@ -44,7 +44,7 @@ const getUser = async ({
         updatedAt: mongoUser.updatedAt.toString(),
       };
       if (user.password === password) {
-        return create200Response({ ...user, password: '' });
+        return create200Response(user);
       }
       return create403Response();
     }

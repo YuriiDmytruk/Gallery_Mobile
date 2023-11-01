@@ -71,7 +71,7 @@ app.post('/users', async (req: Request, res: Response) => {
 });
 
 app.get('/users', async (req: Request, res: Response) => {
-  console.log('POST user');
+  console.log('GET users');
   let result;
 
   const search = req.query.search;

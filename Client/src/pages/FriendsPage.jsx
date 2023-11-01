@@ -8,7 +8,7 @@ import { FindFriends, MyFriends } from '../components/index';
 import styles from '../styles/EnterPage';
 
 const FriendsPage = () => {
-  const [isFindFriends, setIsFindFriends] = useState(true);
+  const [isFindFriends, setIsFindFriends] = useState(false);
   const theme = useTheme();
   return (
     <ScrollView>

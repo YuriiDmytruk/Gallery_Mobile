@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useTheme, TextInput, Text } from 'react-native-paper';
+import { useSelector } from 'react-redux';
 
 import FindFriendLine from './FindFriendLine';
 
 import styles from '../styles/FindFriends';
+import { getUsers } from '../util/api';
 
 const FindFriends = () => {
   const [text, setText] = useState('');
-  const [users, setUsers] = useState([
+  const [users, setUsers] = useState([]);
+  const user = useSelector((state) => state.user);
 
-  ]);
   const theme = useTheme();
 
-  const onSearchClick = () => {
-    console.log('serch');
+  const onSearchClick = async () => {
+    const usersData = await getUsers(
+      text,
+      user.friends,
+      user._id,
+      'search'
+    );
+    setUsers(usersData)
   };
 
   return (
@@ -38,8 +46,8 @@ const FindFriends = () => {
         </View>
       ) : (
         <ScrollView style={styles.usersContainer}>
-          {users.map((user) => (
-            <FindFriendLine user={user} />
+          {users.map((friend) => (
+            <FindFriendLine key={friend._id} user={friend} loggedInUser={user}/>
           ))}
           <View style={styles.placeHolder}></View>
         </ScrollView>
