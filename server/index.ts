@@ -11,7 +11,14 @@ import {
   getPopularImages,
 } from './dataManagers/imagesDataManager';
 import { putScore } from './dataManagers/imageScoresDataManager';
-import { postUser, getUser } from './dataManagers/usersDataManager';
+import {
+  postUser,
+  getUser,
+  getFriends,
+  searchUser,
+  addFriend,
+  deleteFriend,
+} from './dataManagers/usersDataManager';
 
 dotenv.config();
 
@@ -65,16 +72,39 @@ app.post('/users', async (req: Request, res: Response) => {
 
 app.get('/users', async (req: Request, res: Response) => {
   console.log('POST user');
-
   let result;
 
   const search = req.query.search;
+  const userId = req.query.userId;
+  const key = req.query.key;
   let friends = req.query.friends;
+
   if (friends !== undefined && friends !== '') {
-    friends = JSON.parse(friends.toString());
+    if (key !== undefined && key === 'search') {
+      result = await searchUser(
+        search as string,
+        friends as string[],
+        userId as string
+      );
+      res.send(result);
+      return;
+    }
+    friends = JSON.parse(friends.toString()) as string[];
+    result = await getFriends(friends);
+    res.send(result);
+    return;
   }
-  console.log(friends);
-  //const result = await postUser({ ...req.body.user });
+  res.send(null);
+});
+
+app.patch('/users', async (req: Request, res: Response) => {
+  console.log('PATCH user');
+  let result;
+  if (req.body.key === 'add') {
+    result = await addFriend(req.body.userId, req.body.friendId);
+  } else {
+    result = await deleteFriend(req.body.userId, req.body.friendId);
+  }
   res.send(result);
 });
 
