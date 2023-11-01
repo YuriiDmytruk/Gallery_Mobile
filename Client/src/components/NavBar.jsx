@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { IconButton } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
@@ -9,7 +9,7 @@ import styles from '../styles/NavBar';
 const ICON_SIZE = 30;
 const ADD_ICON_SIZE = 50;
 
-const NavBar = () => {
+const NavBar = ({ userId }) => {
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -85,7 +85,9 @@ const NavBar = () => {
             icon="image-multiple-outline"
             iconColor={theme.colors.primary}
             size={ICON_SIZE}
-            onPress={() => navigation.navigate('MyGalery')}
+            onPress={() =>
+              navigation.navigate('MyGalery')
+            }
           />
         </View>
       </View>
