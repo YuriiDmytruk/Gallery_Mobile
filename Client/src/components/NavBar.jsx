@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { IconButton } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
@@ -42,7 +42,7 @@ const NavBar = () => {
             icon="account-group"
             iconColor={theme.colors.primary}
             size={ICON_SIZE}
-            onPress={() => navigation.navigate('FindFrends')}
+            onPress={() => navigation.navigate('FriendsPage')}
           />
         </View>
       </View>

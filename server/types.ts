@@ -30,7 +30,8 @@ type UserType = {
 type MongoImageType = {
   _id: ObjectId;
   url: string;
-  author: ObjectId;
+  authorId: ObjectId;
+  authorName: string;
   description: string;
   createdAt: NativeDate;
   updatedAt: NativeDate;

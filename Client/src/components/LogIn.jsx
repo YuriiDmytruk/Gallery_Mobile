@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { useTheme, Button, TextInput } from 'react-native-paper';
 import { putUser } from '../util/api';
-import { set } from '../util/asyncStorage';
+import { useDispatch } from 'react-redux';
 
+import { addUser } from '../redux/ducks/users';
 import styles from '../styles/LogIn';
 
-const LogIn = ({setAuthor}) => {
+const LogIn = () => {
   const [user, setUser] = useState({
     email: 'yuriydmytrukr@gmail.com',
     password: '1111',
   });
   const [showPassword, setShowPassword] = useState(true);
   const theme = useTheme();
+  const dispatch = useDispatch();
 
   const onLogInClick = async () => {
-    const user = JSON.stringify((await putUser(user)).value);
-    set(user);
-    setAuthor(user);
+    const loggedInUser = (await putUser(user)).value;
+    dispatch(addUser(loggedInUser));
   };
 
   return (

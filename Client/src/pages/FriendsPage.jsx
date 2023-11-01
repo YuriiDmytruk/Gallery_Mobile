@@ -3,12 +3,12 @@ import { View, ScrollView, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
 
-import { LogIn, Register } from '../components/index';
+import { FindFriends, MyFriends } from '../components/index';
 
 import styles from '../styles/EnterPage';
 
-const EnterPage = () => {
-  const [isLoggingIn, setIsLoggingIn] = useState(true);
+const FriendsPage = () => {
+  const [isFindFriends, setIsFindFriends] = useState(false);
   const theme = useTheme();
   return (
     <ScrollView>
@@ -16,21 +16,21 @@ const EnterPage = () => {
         <Button
           mode="contained"
           style={styles.button}
-          onPress={() => setIsLoggingIn(true)}
+          onPress={() => setIsFindFriends(true)}
         >
-          <Text style={{ fontSize: 20 }}>Log In</Text>
+          <Text style={{ fontSize: 20 }}>Find friends</Text>
         </Button>
         <Button
           mode="contained"
           style={styles.button}
-          onPress={() => setIsLoggingIn(false)}
+          onPress={() => setIsFindFriends(false)}
         >
-          <Text style={{ fontSize: 20 }}>Register</Text>
+          <Text style={{ fontSize: 20 }}>My friends</Text>
         </Button>
       </View>
-      {isLoggingIn ? <LogIn /> : <Register setIsLoggingIn={setIsLoggingIn}/>}
+      {isFindFriends ? <FindFriends /> : <MyFriends/>}
     </ScrollView>
   );
 };
 
-export default EnterPage;
+export default FriendsPage;
