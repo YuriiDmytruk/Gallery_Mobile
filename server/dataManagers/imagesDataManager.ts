@@ -1,19 +1,22 @@
 import Image from '../models/image';
 import { ImageType, ResponseType, MongoImageType } from '../types';
 import { postImageScore, getAverageImageScore } from './imageScoresDataManager';
+import {getAuthorName} from './usersDataManager';
 import handleError from './utill';
 import { create200Response } from './responseCreators';
 
 const postImage = async ({
   url,
-  author,
+  authorId,
+  authorName,
   description,
 }: {
   url: string;
-  author: string;
+  authorId: string;
+  authorName: string;
   description: string;
 }): Promise<ResponseType> => {
-  const image = new Image({ url, author, description });
+  const image = new Image({ url, authorId, authorName, description });
   try {
     const result = await image.save();
     postImageScore(result.id);
@@ -25,8 +28,7 @@ const postImage = async ({
 
 const getImagesByAuthor = async (authorId: string): Promise<ResponseType> => {
   try {
-    const images = await Image.find({ author: authorId });
-
+    const images = await Image.find({ authorId: authorId });
     const imagesWithScores: ImageType[] = await Promise.all(
       images.map(async (image) => await createImageWithScore(image.toObject()))
     );
@@ -86,12 +88,15 @@ const createImageWithScore = async (
   const score = (await getAverageImageScore(image._id.toString())).value as
     | number
     | null;
-  console.log(image);
+  const name = (await getAuthorName(image.authorId.toString())).value as
+    | string
+    | null;
   return {
     ...image,
     score: score,
     _id: image._id.toString(),
-    author: image.author.toString(),
+    authorId: image.authorId.toString(),
+    authorName: name,
     createdAt: image.createdAt.toString(),
     updatedAt: image.updatedAt.toString(),
   };

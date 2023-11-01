@@ -21,10 +21,11 @@ const styles = {
     alignItems: 'center',
   },
 
-  authorContainer: {
+  downContainer: {
     height: screenHeight * 0.05,
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
 
