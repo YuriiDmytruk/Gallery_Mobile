@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { Dimensions } from 'react-native';
@@ -17,7 +17,7 @@ const ImageCard = ({ image }) => {
   const theme = useTheme();
 
   const [rating, setRating] = useState(image.score ? image.score : 0);
-  const isRatingDisabled = (userId === image.authorId);
+  const isRatingDisabled = userId === image.authorId;
 
   const onRatingChange = (value) => {
     setRating(value);
@@ -70,7 +70,7 @@ const ImageCard = ({ image }) => {
           rating={rating}
           onChange={onRatingChange}
           disabled={isRatingDisabled}
-          fillColor={isRatingDisabled ? '#ccb562' : '#ffcc12' }
+          fillColor={isRatingDisabled ? '#ccb562' : '#ffcc12'}
         />
       </View>
     </View>

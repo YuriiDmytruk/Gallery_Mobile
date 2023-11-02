@@ -16,14 +16,19 @@ const MyFriends = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const usersData = await getUsers('', user.friends, user._id, 'getFriends');
+        const usersData = await getUsers(
+          '',
+          user.friends,
+          user._id,
+          'getFriends'
+        );
         setUsers(usersData);
       } catch (error) {
         console.error(error);
       }
     }
     fetchData();
-  }, [])
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -34,7 +39,7 @@ const MyFriends = () => {
       ) : (
         <ScrollView style={styles.usersContainer}>
           {users.map((friend) => (
-            <MyFriendLine key={friend._id}  user={friend} loggedInUser={user}/>
+            <MyFriendLine key={friend._id} user={friend} loggedInUser={user} />
           ))}
           <View style={styles.placeHolder}></View>
         </ScrollView>

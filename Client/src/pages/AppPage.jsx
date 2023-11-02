@@ -2,22 +2,17 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  MD3LightTheme as Default,
-  MD3DarkTheme as DefaultDark,
-  PaperProvider,
-} from 'react-native-paper';
+import { MD3LightTheme, PaperProvider } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 
 import EnterPage from './EnterPage';
 import AddImagePage from './AddImagePage';
 import FriendsPage from './FriendsPage';
-import MyGaleryPage from './MyGaleryPage';
+import GaleryPage from './GaleryPage';
 import MyProfilePage from './MyProfilePage';
-import PopularGaleryPage from './PopularGaleryPage';
 import { NavBar } from '../components/index';
 
-const theme = Default;
+const theme = MD3LightTheme;
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -36,9 +31,17 @@ const App = () => {
           >
             <Stack.Screen name="AddImage" component={AddImagePage} />
             <Stack.Screen name="FriendsPage" component={FriendsPage} />
-            <Stack.Screen name="MyGalery" component={MyGaleryPage} />
+            <Stack.Screen
+              name="MyGalery"
+              component={GaleryPage}
+              initialParams={{ userId: userId, amount: '' }}
+            />
             <Stack.Screen name="MyProfile" component={MyProfilePage} />
-            <Stack.Screen name="PopularGalery" component={PopularGaleryPage} />
+            <Stack.Screen
+              name="PopularGalery"
+              component={GaleryPage}
+              initialParams={{ userId: '', amount: '20' }}
+            />
           </Stack.Navigator>
           <NavBar />
         </NavigationContainer>

@@ -7,10 +7,10 @@ const styles = {
   container: {
     paddingTop: screenHeight * 0.02,
   },
-  input :{
-    width: screenWidth*0.8,
+  input: {
+    width: screenWidth * 0.8,
   },
-  inputContainer:{
+  inputContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -19,11 +19,11 @@ const styles = {
     height: screenHeight * 0.13,
     backgroundColor: 'transparent',
   },
-  messageContainer:{
+  messageContainer: {
     paddingTop: screenHeight * 0.2,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 };
 
 export default styles;

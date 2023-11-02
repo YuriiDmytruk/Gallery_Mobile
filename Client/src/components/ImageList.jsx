@@ -1,14 +1,11 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { ScrollView, View } from 'react-native';
 
 import { ImageCard } from './index';
 
 import styles from '../styles/ImageList';
 
 const ImageList = ({ images }) => {
-  const theme = useTheme();
-
   return (
     <ScrollView style={styles.container}>
       {images.map((image) => (

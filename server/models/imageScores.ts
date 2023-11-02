@@ -9,13 +9,17 @@ const imageScoresShema = new Schema(
       required: true,
     },
     userScores: {
-      type: [{userId: Schema.Types.ObjectId, score: Number}],
+      type: [{ userId: Schema.Types.ObjectId, score: Number }],
       required: true,
     },
   },
   { timestamps: true }
 );
 
-const ImageScores = mongoose.model('ImageScores', imageScoresShema, 'imagescores');
+const ImageScores = mongoose.model(
+  'ImageScores',
+  imageScoresShema,
+  'imagescores'
+);
 
 export default ImageScores;

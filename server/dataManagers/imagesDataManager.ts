@@ -1,7 +1,7 @@
 import Image from '../models/image';
 import { ImageType, ResponseType, MongoImageType } from '../types';
 import { postImageScore, getAverageImageScore } from './imageScoresDataManager';
-import {getAuthorName} from './usersDataManager';
+import { getAuthorName } from './usersDataManager';
 import handleError from './utill';
 import { create200Response } from './responseCreators';
 

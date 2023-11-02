@@ -106,12 +106,15 @@ const putScore = async (score) => {
     console.error('Fetch error:', error.message);
     throw error;
   }
-}
+};
 
 const getUsers = async (search, friends, userId, key) => {
   try {
     const response = await fetch(
-      URL + `users/?search=${search}&friends=${JSON.stringify(friends)}&userId=${userId}&key=${key}`,
+      URL +
+        `users/?search=${search}&friends=${JSON.stringify(
+          friends
+        )}&userId=${userId}&key=${key}`,
       {
         method: 'GET',
       }
@@ -151,7 +154,14 @@ const patchFriend = async (userId, friendId, key) => {
     console.error('Fetch error:', error.message);
     throw error;
   }
-}
+};
 
-
-export { getImages, postImage, putUser, postUser, putScore, getUsers, patchFriend };
+export {
+  getImages,
+  postImage,
+  putUser,
+  postUser,
+  putScore,
+  getUsers,
+  patchFriend,
+};
