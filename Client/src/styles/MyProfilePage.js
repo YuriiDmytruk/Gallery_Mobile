@@ -11,20 +11,20 @@ const styles = {
   },
   textContainer: {
     width: screenWidth,
-    flex:0.8,
+    flex: 0.8,
   },
-  text:{
+  text: {
     paddingLeft: screenWidth * 0.05,
   },
-  nickName:{
+  nickName: {
     paddingBottom: screenHeight * 0.03,
     textAlign: 'center',
   },
-  button:{
+  button: {
     width: screenWidth * 0.4,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 };
 
 export default styles;

@@ -28,7 +28,7 @@ const EnterPage = () => {
           <Text style={{ fontSize: 20 }}>Register</Text>
         </Button>
       </View>
-      {isLoggingIn ? <LogIn /> : <Register setIsLoggingIn={setIsLoggingIn}/>}
+      {isLoggingIn ? <LogIn /> : <Register setIsLoggingIn={setIsLoggingIn} />}
     </ScrollView>
   );
 };

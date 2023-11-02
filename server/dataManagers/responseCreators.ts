@@ -1,7 +1,14 @@
 import { ResponseType, ImageType, UserType } from '../types';
 
 const create200Response = (
-  value: ImageType | ImageType[] | UserType | UserType[] | number | null | string
+  value:
+    | ImageType
+    | ImageType[]
+    | UserType
+    | UserType[]
+    | number
+    | null
+    | string
 ): ResponseType => {
   return {
     statusCode: 200,
@@ -34,4 +41,9 @@ const create500Response = (): ResponseType => {
   };
 };
 
-export { create200Response, create403Response, create404Response, create500Response };
+export {
+  create200Response,
+  create403Response,
+  create404Response,
+  create500Response,
+};

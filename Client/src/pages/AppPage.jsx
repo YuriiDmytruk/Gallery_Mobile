@@ -2,11 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  MD3LightTheme as Default,
-  MD3DarkTheme as DefaultDark,
-  PaperProvider,
-} from 'react-native-paper';
+import { MD3LightTheme, PaperProvider } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 
 import EnterPage from './EnterPage';
@@ -16,7 +12,7 @@ import GaleryPage from './GaleryPage';
 import MyProfilePage from './MyProfilePage';
 import { NavBar } from '../components/index';
 
-const theme = Default;
+const theme = MD3LightTheme;
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -47,7 +43,7 @@ const App = () => {
               initialParams={{ userId: '', amount: '20' }}
             />
           </Stack.Navigator>
-          <NavBar userId={userId}/>
+          <NavBar />
         </NavigationContainer>
       )}
 

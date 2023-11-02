@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import { Button } from 'react-native-paper';
-import { useTheme } from 'react-native-paper';
 
 import { FindFriends, MyFriends } from '../components/index';
 
@@ -9,7 +8,7 @@ import styles from '../styles/EnterPage';
 
 const FriendsPage = () => {
   const [isFindFriends, setIsFindFriends] = useState(false);
-  const theme = useTheme();
+
   return (
     <ScrollView>
       <View style={styles.buttonContainer}>
@@ -28,7 +27,7 @@ const FriendsPage = () => {
           <Text style={{ fontSize: 20 }}>My friends</Text>
         </Button>
       </View>
-      {isFindFriends ? <FindFriends /> : <MyFriends/>}
+      {isFindFriends ? <FindFriends /> : <MyFriends />}
     </ScrollView>
   );
 };

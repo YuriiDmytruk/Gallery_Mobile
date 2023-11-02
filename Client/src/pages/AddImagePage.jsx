@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
-import { useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,7 +10,6 @@ import styles from '../styles/AddImagePage';
 import { postImage } from '../util/api';
 
 const AddImagePage = () => {
-  const theme = useTheme();
   const navigation = useNavigation();
   const user = useSelector((state) => state.user);
 
@@ -19,12 +17,12 @@ const AddImagePage = () => {
     url: 'https://images.ctfassets.net/hrltx12pl8hq/3Z1N8LpxtXNQhBD5EnIg8X/975e2497dc598bb64fde390592ae1133/spring-images-min.jpg',
     description: 'Tree',
     authorName: user.nickName,
-    authorId: user._id
+    authorId: user._id,
   });
 
   const onAddClick = () => {
     postImage(image);
-    navigation.navigate('MyGalery')
+    navigation.navigate('MyGalery');
   };
 
   return (

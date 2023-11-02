@@ -2,7 +2,14 @@ import { ObjectId } from 'mongodb';
 
 type ResponseType = {
   statusCode: number;
-  value: ImageType | ImageType[] | UserType | UserType[] | number | string | null;
+  value:
+    | ImageType
+    | ImageType[]
+    | UserType
+    | UserType[]
+    | number
+    | string
+    | null;
   errorMessage: string;
 };
 

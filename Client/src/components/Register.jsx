@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { useTheme, Button, TextInput } from 'react-native-paper';
 
 import styles from '../styles/Register';
-import {postUser} from '../util/api'
+import { postUser } from '../util/api';
 
-const Register = ({setIsLoggingIn}) => {
+const Register = ({ setIsLoggingIn }) => {
   const [user, setUser] = useState({
     email: 'tom@gmail.com',
     password: '1111',
@@ -16,12 +16,11 @@ const Register = ({setIsLoggingIn}) => {
   const theme = useTheme();
 
   const onRegisterClick = async () => {
-    const response = await postUser(user)
-    if(response.statusCode === 200){
-      setIsLoggingIn(true)
-    }
-    else{
-      console.log(response.errorMessage)
+    const response = await postUser(user);
+    if (response.statusCode === 200) {
+      setIsLoggingIn(true);
+    } else {
+      console.log(response.errorMessage);
     }
   };
 
@@ -38,7 +37,7 @@ const Register = ({setIsLoggingIn}) => {
           value={user.nickName}
           right={
             <TextInput.Icon
-              icon='close-circle-outline'
+              icon="close-circle-outline"
               onPress={() => setUser({ ...user, nickName: '' })}
             />
           }
@@ -50,7 +49,7 @@ const Register = ({setIsLoggingIn}) => {
           value={user.email}
           right={
             <TextInput.Icon
-              icon='close-circle-outline'
+              icon="close-circle-outline"
               onPress={() => setUser({ ...user, email: '' })}
             />
           }

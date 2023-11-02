@@ -9,7 +9,7 @@ const userShema = new Schema(
       required: true,
       unique: true,
     },
-    password:{
+    password: {
       type: String,
       required: true,
     },
@@ -17,10 +17,12 @@ const userShema = new Schema(
       type: String,
       required: true,
     },
-    friends: [{
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-    }],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   { timestamps: true }
 );

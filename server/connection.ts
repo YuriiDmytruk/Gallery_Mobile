@@ -6,6 +6,8 @@ const uri =
 mongoose
   .connect(uri)
   .then(() => console.log('Connected to MongoDB'))
-  .catch((error: Error) => console.error('Error connecting to MongoDB:', error));
+  .catch((error: Error) =>
+    console.error('Error connecting to MongoDB:', error)
+  );
 
 module.exports = mongoose;
